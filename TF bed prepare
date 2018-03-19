@@ -1,0 +1,9 @@
+#### the original files #########
+/scratch/guox3/eQTL/TF/peak.bed
+
+#### processed the bed files contaiting rsID information ########
+/scratch/hej4/GXY/eQTL
+
+dataset1: rs_all.txt
+dataset2: total_rs_Matrix.txt
+
