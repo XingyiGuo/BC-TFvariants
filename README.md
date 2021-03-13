@@ -7,7 +7,7 @@
 <a name="Introduction"/>
 
 # Introduction
-## Identify TF and TF co-oppassoicated with Breast cancer risk
+## Identify TF and Co-Factors assciated with Breast cancer risk
 Genome-wide association studies (GWAS) and fine-mapping studies suggest that pathogenic dysregulations of gene expression are mediated through genetically altered binding affinities of specific transcription factors (TFs). Here, we developed a statistical framework to analyze extensive ChIP-seq and GWAS data and identified 22 breast cancer risk-associated TFs. We found that genetic variations affect TF-DNA bindings and the interaction of FOXA1 with co-factors such as ESR1 and E2F1, and the interaction of TFs with chromatin features (i.e., enhancers) played a key role in breast cancer susceptibility. 
 
 
