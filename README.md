@@ -1,4 +1,4 @@
-# A statistical framework to investiage Genetic variations of TF-DNA bindings in breast cancer susceptibility
+# A statistical framework to investiage genetic variations of TF-DNA bindings in breast cancer susceptibility
 
 ---
 * [Introduction](#Introduction)
@@ -43,12 +43,12 @@ Y_ij=β_0+β_1 〖TF〗_ij+V_i+ε_ij (Equation 1)
 
 Specifically, Y_ij is the Chi-square value for the j-th variant in the i-th LD block; β0 is the fixed intercept, and β1 is the fixed slope, which measure the mean difference of the Chi-Square values (∆χ ̅^2) between TF status; 〖TF〗_ij is the j-th TF value (i.e., 1 for a variant located in a TF binding site, 0 otherwise) in the i-th LD block; V_i is the random intercept for the i-th LD block; and ε_ijis the error term. To alleviate the effect of variant correlation within LD blocks on parameter estimation, we divided variants in the whole genome into 100 datasets by sequentially selecting 1 in every 100 variants, according to chromosome positions. We combined results from 100 repeated models using the inverse variance-weighting average method.
 
-## Genetic Variations of TF-DNA Bindings of Breast Cancer Risk-Associated TFs 
+### Genetic Variations of TF-DNA Bindings of Breast Cancer Risk-Associated TFs 
 
-## Motif-Dependent Genetic Variations of TF-DNA Bindings of Breast Cancer Risk-Associated TFs
+### Motif-Dependent Genetic Variations of TF-DNA Bindings of Breast Cancer Risk-Associated TFs
 
-## Genetic Variations of TF-DNA Bindings of FOXA1 and Co-Factors Driving Breast Cancer Susceptibility 
+### Genetic Variations of TF-DNA Bindings of FOXA1 and Co-Factors Driving Breast Cancer Susceptibility 
 
-## Genetic Variations of TF Colocalizing with Chromatin Features Associated with Breast Cancer Risk
+### Genetic Variations of TF Colocalizing with Chromatin Features Associated with Breast Cancer Risk
 
 more information see main.R 
