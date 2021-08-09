@@ -17,7 +17,7 @@ setwd('/home/ec2-user/project1/chenzs/crctf/TF_only')
 ### example data matrix file see "CRC_GWAS_TFs_matrix_final_include.matrix" under the same directory. In pratice, you need to adjust number of TFs in the mastrix. 
 crc <- fread("CRC_GWAS_TFs_matrix_final_include.matrix",header=T)
 names(crc)
-dim(crc)
+dim(crc) # in our real data matrix of CRC, we have a 9,113,959 x 237
  ```
 # cauculate t values for GWAS associations
 ```
