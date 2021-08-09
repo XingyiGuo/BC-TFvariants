@@ -1,5 +1,5 @@
 
-ibrary(data.table)
+library(data.table)
 library(lme4)
 
 setwd('/home/ec2-user/project1/BCTF/xingyiProc/BCACsnpAnnotation')
