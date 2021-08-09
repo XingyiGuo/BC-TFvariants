@@ -17,9 +17,9 @@ setwd('/home/ec2-user/project1/chenzs/crctf/TF_only')
 ### example data matrix file see "CRC_GWAS_TFs_matrix_final_include.matrix" under the same directory. In pratice, you need to adjust number of TFs in the mastrix. 
 crc <- fread("CRC_GWAS_TFs_matrix_final_include.matrix",header=T)
 names(crc)
-dim(crc) # in our real data matrix of CRC, we have a 9,113,959 x 237
+dim(crc) # in our real data matrix of CRC, we have a 9,113,959 x 84 (including 68 unique TFs) 
  ```
-# cauculate t values for GWAS associations
+# Cauculate t values for GWAS associations
 ```
 crc <- within (crc, {
 freq  <-as.numeric(as.character(Freq1))
@@ -28,9 +28,9 @@ se  <-as.numeric(as.character(StdErr))
 tv<-beta/se
  })
 ```
- # remove duplicates and those with missing t-values
+ # Remove duplicates and those with missing t-values
  ```
-crc <- crc[!duplicated(crc[,236:237]),-c(5:7,11:15)]
+crc <- crc[!duplicated(crc[,83:84]),-c(5:7,11:15)]
 crc<-crc[!is.na(crc$tv) & crc$chrZ>=1 & crc$chrZ<=22,]
 dim(crc)  
 ```
@@ -66,18 +66,18 @@ crc$chosen<-ifelse(crc$ID %in% unlist(idv),1,0)
 rm(idv)
 table(crc$chosen) #1: 8159194 SNPs chosen for deflated genome, 0: 952306 SNPs (enriched with highly significant SNPs)
 ```
-# input gene position data
+# Input gene position data
 ```
-gene_pos<-read.table('/home/ec2-user/project1/chenzs/crctf/TF_only/gencode.v19.annotation.gtf.Gene',head=F)
+gene_pos<-read.table('/home/ec2-user/.../gencode.v19.annotation.gtf.Gene',head=F)
 gene_pos$V3<-gsub("chr(\\w+)","\\1",gene_pos$V3, perl=T)
 gene_pos <- gene_pos[!duplicated(gene_pos[,c(3,4,5,2)]) & gene_pos$V7=='protein_coding',]
 gene_pos<-gene_pos[gene_pos$V3 %in% 1:22 ,c(3,4,5,2)]
 names(gene_pos)<-c('chr','a','b','gene')
 dim(gene_pos)
 ```
-#### define LD block based on 100kb
+#### Define LD block based on 100kb
 ```
-names(crc)[228,229]<-c("chr","position")
+names(crc)[85,86]<-c("chr","position")
 KB<-100000
 crc$loci <- paste0(crc$chr,'_',floor(crc$position/KB))
 
@@ -90,10 +90,10 @@ crc <- as.data.frame (crc)
 crc <- crc[, - which(colnames(crc) %in% "TF_219")] # remove this TF due to error
 ```
 ####  Association of single TF with continuous Chi-square (==tv^2) for CRC risk using genealized mixed models
-# computing time for each model: about 5 minutes
+# Computing time for each model: about 5 minutes
 ```
 names(crc)[9:227]
-outr1<-mclapply(crc[,9:227], function (x) {summary(lmer(I(crc$tv^2)~x+(1|crc$loci),control = lmerControl(calc.derivs = FALSE)))$coef[2,]}, mc.cores = 6)
+outr1<-mclapply(crc[,9:82], function (x) {summary(lmer(I(crc$tv^2)~x+(1|crc$loci),control = lmerControl(calc.derivs = FALSE)))$coef[2,]}, mc.cores = 6)
 
 # check errors in parallel
 # bad <- sapply (outr1, inherits, what = "try-error")
