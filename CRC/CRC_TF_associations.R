@@ -11,7 +11,7 @@ library(data.table) # read in large data matrix fast
 library(lme4)       # for mixed model
 library(parallel)
 
-setwd('/home/ec2-user/project1/chenzs/crctf/TF_only')
+setwd('/home/ec2-user/.../CRC/TFs')
 
 # Input TF matrix
 crc <- fread("CRC_GWAS_TFs_matrix_final_include.matrix",header=T)
